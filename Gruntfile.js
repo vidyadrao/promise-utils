@@ -32,7 +32,6 @@ module.exports = (grunt) => {
             mochaTest: {
                 options: {
                     reporter: 'spec',
-                    captureFile: 'results.txt',
                     quiet: false,
                     clearRequireCache: false,
                     noFail: false

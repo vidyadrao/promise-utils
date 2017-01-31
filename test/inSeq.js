@@ -5,8 +5,6 @@ const sinon = require('sinon');
 const chai = require('chai');
 chai.use(require('sinon-chai'));
 const expect = chai.expect;
-
-
 describe('In Sequence', function() {
     it('should resolve all the promises in sequence', function() {
         const spy = sinon.spy(data => data);
