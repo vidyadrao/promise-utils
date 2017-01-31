@@ -60,7 +60,8 @@ module.exports = (grunt) => {
 
         }
     );
-    grunt.registerTask('coverage',
+    grunt.registerTask(
+        'coverage',
         [
             'clean:coverage',
             'copy:coverage',
@@ -68,6 +69,14 @@ module.exports = (grunt) => {
             'mochaTest:coverage',
             'storeCoverage',
             'makeReport'
+        ]
+    );
+    grunt.registerTask(
+        'test',
+        [
+            'clean',
+            'eslint',
+            'mochaTest:test'
         ]
     );
 };

@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "6"
+
+before_install:
+    - npm i grunt-cli -g
+
+script:
+    - grunt test
+
+after_success:
+    - grunt coverage
