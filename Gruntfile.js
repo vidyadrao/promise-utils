@@ -5,6 +5,7 @@ module.exports = (grunt) => {
     grunt.loadNpmTasks('grunt-istanbul');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-coveralls');
     grunt.initConfig(
         {
             copy: {
@@ -50,10 +51,21 @@ module.exports = (grunt) => {
             },
             makeReport: {
                 src: 'coverage/reports/**/*.json',
+
                 options: {
-                    type: 'html',
-                    dir: 'coverage/html',
-                    print: 'detail'
+                    reporters: {
+                        'lcov': { dir: "coverage/reports/lcov" },
+                        'html': { dir: "coverage/reports/html" },
+                        'text-summary': true
+                    }
+                }
+            },
+            coveralls: {
+                options: {
+                    force: false
+                },
+                coverage: {
+                    src: "coverage/reports/lcov/lcov.info"
                 }
             }
 
@@ -67,7 +79,8 @@ module.exports = (grunt) => {
             'instrument',
             'mochaTest:coverage',
             'storeCoverage',
-            'makeReport'
+            'makeReport',
+            'coveralls'
         ]
     );
     grunt.registerTask(
